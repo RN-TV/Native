@@ -2,11 +2,11 @@ package com.pm.rn;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG=MainActivity.class.toString();
@@ -34,10 +34,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,MyReactActivity.class));
             }
         });
+
+//        Handler handler = new Handler();
+//        handler.postDelayed(new SplashHandler(), 2000);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    class SplashHandler implements Runnable{
+        public void run() {
+            startActivity(new Intent(getApplication(),MainActivity.class));
+            MainActivity.this.finish();
+        }
     }
 }

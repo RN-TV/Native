@@ -48,10 +48,10 @@ import javax.annotation.Nullable;
  * @author markzhai on 16/8/20
  * @version 0.31.0
  */
-public abstract class MrReactActivity extends Activity
+public abstract class CacheReactActivity extends Activity
         implements DefaultHardwareBackBtnHandler, PermissionAwareActivity {
 
-    private static final String TAG = "MrReactActivity";
+    private static final String TAG = "CacheReactActivity";
 
     private static final String REDBOX_PERMISSION_MESSAGE =
             "Overlay permissions needs to be granted in order for react native apps to run in dev mode";

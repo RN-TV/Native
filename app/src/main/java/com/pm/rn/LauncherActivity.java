@@ -1,7 +1,7 @@
 package com.pm.rn;
 
 
-public class LauncherActivity extends MrReactActivity {
+public class LauncherActivity extends CacheReactActivity {
 
 
     @Override
