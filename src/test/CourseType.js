@@ -38,7 +38,7 @@ class CourseType extends Component {
             <View style={styles.row}>
                 <TouchableOpacity style={styles.imageView} onPress={this.props.onPress}>
                     <Image
-                        source={this.state.choosed == 0 ? require("../../res/mipmap-mdpi/right_big_arrow.png") : require("../../res/mipmap-mdpi/right_small_arrow.png") }/>
+                        source={this.state.choosed == 0 ? require("../../img/right_big_arrow.png") : require("../../img/right_small_arrow.png") }/>
                 </TouchableOpacity>
                 <View style={styles.textInputTitle}>
                     <Text

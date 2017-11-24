@@ -83,20 +83,20 @@ export default class StatusBar extends Component {
                         <TouchableOpacity
                             onPress={() => MyIntentModule.startActivity(Activity.kidsmode.pkg, Activity.kidsmode.activityName, Activity.kidsmode.action, 100)}>
                             <Image style={styles.status_bar_icon}
-                                   source={require('../res/mipmap-mdpi/mode.png')}/>
+                                   source={require('../img/mode.png')}/>
                         </TouchableOpacity>
 
                         <TouchableOpacity
                             onPress={() => MyIntentModule.startActivity(Activity.userspace.pkg, Activity.userspace.activityName, Activity.userspace.action, 100)}>
                             <Image style={styles.status_bar_icon}
-                                   source={require('../res/mipmap-mdpi/search.png')}/>
+                                   source={require('../img/search.png')}/>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.status_bar_right}>
                         <TouchableOpacity
                             onPress={() => MyIntentModule.startActivity(Activity.netWork.pkg, Activity.netWork.activityName, Activity.netWork.action, 100)}>
                             <Image style={styles.status_bar_icon}
-                                   source={require('../res/mipmap-mdpi/status_eth_con_focus.png')}/>
+                                   source={require('../img/status_eth_con_focus.png')}/>
                         </TouchableOpacity>
 
                         <Text style={styles.status_bar_text}>

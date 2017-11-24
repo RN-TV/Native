@@ -19,7 +19,7 @@ import {
 import Dimen from "./config/Dimen";
 import Activity from "./config/Activity";
 import Button from "./test/Button";
-import favorite from '../assests/favorite.json';
+import favorite from '../json/favorite.json';
 import ItemFavoriteApp from "./ItemFavoriteApp";
 
 
@@ -114,7 +114,7 @@ export default class AppContent extends Component {
                 <View style={styles.locale_app_container}>
                     <TouchableHighlight style={styles.more_app}
                                         onPress={() => MyIntentModule.startActivity(Activity.localeApp.pkg, Activity.localeApp.activityName, Activity.localeApp.action, 100)}>
-                        <Image source={require("../res/mipmap-mdpi/app_more.png")}/>
+                        <Image source={require("../img/app_more.png")}/>
                     </TouchableHighlight>
                     <View style={styles.favorite_app}>
                         <FlatList style={{

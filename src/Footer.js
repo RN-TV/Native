@@ -31,14 +31,14 @@ export default class Footer extends Component {
         return (
             <View style={styles.footer}>
                 <Image
-                    source={this.state.selected && this.state.index === 0 ? require("../res/mipmap-mdpi/navigation_focus.png") :
-                        require('../res/mipmap-mdpi/navigaton_normal.png')}/>
+                    source={this.state.selected && this.state.index === 0 ? require("../img/navigation_focus.png") :
+                        require('../img/navigaton_normal.png')}/>
                 <Image
-                    source={this.state.selected && this.state.index === 1 ? require("../res/mipmap-mdpi/navigation_focus.png") :
-                        require('../res/mipmap-mdpi/navigaton_normal.png')}/>
+                    source={this.state.selected && this.state.index === 1 ? require("../img/navigation_focus.png") :
+                        require('../img/navigaton_normal.png')}/>
                 <Image
-                    source={this.state.selected && this.state.index === 2 ? require("../res/mipmap-mdpi/navigation_focus.png") :
-                        require('../res/mipmap-mdpi/navigaton_normal.png')}/>
+                    source={this.state.selected && this.state.index === 2 ? require("../img/navigation_focus.png") :
+                        require('../img/navigaton_normal.png')}/>
             </View>);
     }
 }

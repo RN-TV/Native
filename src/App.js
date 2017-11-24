@@ -30,7 +30,7 @@ import AppContent from './AppContent';
 import TvContent from './TvContent';
 import ToastNative from './utils/NativeModules';
 import Item from './Item';
-import movies from '../assests/movies.json';
+// import movies from '../json/movies.json';
 
 const PAGES = 3;
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
@@ -133,13 +133,13 @@ export default class App extends Component {
     };
 
     render() {
-        let rightIcon = {};
-        this.state.focus ? rightIcon = require("../res/mipmap-mdpi/right_big_arrow.png") : rightIcon = require("../res/mipmap-mdpi/right_small_arrow.png");
+        // let rightIcon = {};
+        // this.state.focus ? rightIcon = require("../img/right_big_arrow.png") : rightIcon = require("../img/right_small_arrow.png");
         const {navigate} = this.props.navigation;
         return (
             <View style={[styles.flex, styles.root_container]}>
 
-                <Image source={require("../res/mipmap-mdpi/launcher_bj.png")}>
+                <Image source={require("../img/launcher_bj.png")}>
 
                     <StatusBar
                         ref={(statusBar) => {
@@ -154,7 +154,7 @@ export default class App extends Component {
                                           onPress={() => this.move(-1)}
                                           activeOpacity={0.5}>
                             <Image style={styles.button_image}
-                                   source={require('../res/mipmap-mdpi/left_big_arrow.png')}/>
+                                   source={require('../img/left_big_arrow.png')}/>
                         </TouchableOpacity>
 
                         <ViewPagerAndroid style={styles.view_pager}
@@ -188,7 +188,7 @@ export default class App extends Component {
                                             onShowUnderlay={() => this.onShowUnderlay()}
                                             underlayColor={"#ffffff"}>
                             <Image style={styles.button_image}
-                                   source={this.state.focus ? require("../res/mipmap-mdpi/right_big_arrow.png") : require("../res/mipmap-mdpi/right_small_arrow.png")}/>
+                                   source={this.state.focus ? require("../img/right_big_arrow.png") : require("../img/right_small_arrow.png")}/>
                         </TouchableHighlight>
                     </View>
                     <Footer ref="footer"

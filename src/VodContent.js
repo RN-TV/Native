@@ -19,9 +19,9 @@ import {
 import StatusBar from './StatusBar';
 import Item from './Item';
 import ItemClassification from './ItemClassification';
-import movies from '../assests/movies.json';
-import hot from '../assests/hot.json';
-import classification from '../assests/classification.json';
+import movies from '../json/movies.json';
+import hot from '../json/hot.json';
+import classification from '../json/classification.json';
 import TouchableItem from "../node_modules/react-navigation/lib/views/TouchableItem";
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
@@ -40,7 +40,7 @@ export default class VodContent extends Component {
                                         onPress={() => this.props.onPress()}
                                         title="VOD">
                         <Image
-                            source={require('../res/mipmap-mdpi/video_default_bg.png')}/>
+                            source={require('../img/video_default_bg.png')}/>
                     </TouchableHighlight>
 
                     <TouchableHighlight onPress={() => this.props.onPress()}
@@ -91,7 +91,7 @@ export default class VodContent extends Component {
                 <View style={styles.classification}>
                     <TouchableHighlight >
                         <Image style={styles.category_icon}
-                               source={require('../res/mipmap-mdpi/category_left_normal.png')}/>
+                               source={require('../img/category_left_normal.png')}/>
                     </TouchableHighlight>
                     {/*<ScrollView horizontal={true}*/}
                     {/*style={styles.category}>*/}
@@ -129,7 +129,7 @@ export default class VodContent extends Component {
 
                     <TouchableHighlight>
                         <Image style={styles.category_icon}
-                               source={require('../res/mipmap-mdpi/category_right_normal.png')}/>
+                               source={require('../img/category_right_normal.png')}/>
                     </TouchableHighlight>
                 </View>
             </View>

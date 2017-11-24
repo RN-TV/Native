@@ -21,7 +21,7 @@ export default class Item extends Component {
                 style={styles.root}
                 onPress={onPress}>
                 <Image style={styles.icons}
-                       source={require('../res/mipmap-mdpi/preview3.jpg')}>
+                       source={require('../img/preview3.jpg')}>
                     <Text style={styles.title}>侠盗飞车</Text>
                 </Image>
             </TouchableOpacity>

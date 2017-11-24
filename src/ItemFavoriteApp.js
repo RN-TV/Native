@@ -24,7 +24,7 @@ export default class ItemFavoriteApp extends Component {
                 style={styles.root}
                 onPress={onPress}>
                 <Image style={styles.icons}
-                       source={require('../res/mipmap-mdpi/icon_default.png')}>
+                       source={require('../img/icon_default.png')}>
                 </Image>
             </TouchableOpacity>
         );
