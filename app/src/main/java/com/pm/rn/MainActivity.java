@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     class SplashHandler implements Runnable{
+        @Override
         public void run() {
             startActivity(new Intent(getApplication(),MainActivity.class));
             MainActivity.this.finish();
