@@ -1,7 +1,6 @@
 package com.pm.rn;
 
 import android.app.Application;
-import android.content.Context;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
@@ -11,7 +10,6 @@ import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.pm.rn.utils.FileUtils;
 
-import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -40,7 +38,7 @@ public class MyApplication extends Application implements ReactApplication {
         @Nullable
         @Override
         protected String getJSBundleFile() {
-            String jsBundlePath = FileUtils.getJsBundlePath(getApplicationContext());
+            String jsBundlePath = FileUtils.getJsBundleFile(getApplicationContext());
             Log.d(TAG, "getJSBundleFile: jsBundlePath=" + jsBundlePath);
             if (jsBundlePath != null) {
                 return jsBundlePath;

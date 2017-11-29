@@ -12,15 +12,21 @@ import android.view.KeyEvent;
 import android.widget.Toast;
 
 //import com.facebook.react.LifecycleState;
+import com.facebook.infer.annotation.Assertions;
+import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
+import com.facebook.react.ReactInstanceManagerBuilder;
+import com.facebook.react.ReactNativeHost;
+import com.facebook.react.ReactPackage;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+import com.pm.rn.utils.FileUtils;
 
 
 public class MyReactActivity extends AppCompatActivity implements DefaultHardwareBackBtnHandler {
-    private final String TAG=MyReactActivity.class.toString();
+    private final String TAG = MyReactActivity.class.getSimpleName();
 
     private static final int OVERLAY_PERMISSION_REQ_CODE = 100;
 
@@ -34,15 +40,25 @@ public class MyReactActivity extends AppCompatActivity implements DefaultHardwar
 
         mReactRootView = new ReactRootView(this);
 //        mReactInstanceManager = ReactInstanceManagerProvider.getReactInstanceManager(getApplication());
-        mReactInstanceManager = ReactInstanceManager.builder()
+        ReactInstanceManagerBuilder builder = ReactInstanceManager.builder()
                 .setApplication(getApplication())
-                .setBundleAssetName("index.android.bundle")
                 .setJSMainModuleName("index.android")
                 .addPackage(new MainReactPackage())
                 .setUseDeveloperSupport(true)
-                .setInitialLifecycleState(LifecycleState.RESUMED)
-                .build();
+                .setInitialLifecycleState(LifecycleState.RESUMED);
 
+//        for (ReactPackage reactPackage : getPackages()) {
+//            builder.addPackage(reactPackage);
+//        }
+
+        String jsBundleFile = FileUtils.getJsBundleFile(getApplicationContext());
+        if (jsBundleFile != null) {
+            Log.d(TAG, "onCreate: jsBundleFile != null");
+            builder.setJSBundleFile(jsBundleFile);
+        } else {
+            builder.setBundleAssetName(Assertions.assertNotNull("index.android.bundle"));
+        }
+        mReactInstanceManager = builder.build();
         // 这里的 "MyRnModule" 名字要与前面 index.android.js 里 AppRegistry.registerComponent('MyRnModule', () => HelloWorld); 第一个参数一致。
         mReactRootView.startReactApplication(mReactInstanceManager, "RN", null);
 
@@ -74,7 +90,7 @@ public class MyReactActivity extends AppCompatActivity implements DefaultHardwar
 
         if (mReactInstanceManager != null) {
 //            mReactInstanceManager.onResume(this, this);
-            mReactInstanceManager.onHostResume(this,this);
+            mReactInstanceManager.onHostResume(this, this);
         }
     }
 
@@ -125,6 +141,10 @@ public class MyReactActivity extends AppCompatActivity implements DefaultHardwar
             }
         }
         return super.onKeyUp(keyCode, event);
+    }
+
+    protected ReactNativeHost getReactNativeHost() {
+        return ((ReactApplication) getApplication()).getReactNativeHost();
     }
 
 }

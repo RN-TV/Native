@@ -8,8 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.pm.rn.hot.HotUpdateOwner;
+
 public class MainActivity extends AppCompatActivity {
-    private final String TAG=MainActivity.class.toString();
+    private final String TAG = MainActivity.class.toString();
 
 
     @Override
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button textView = (Button) findViewById(R.id.tv);
         Button button = (Button) findViewById(R.id.button);
+        Button hot = (Button) findViewById(R.id.btn_hot);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,9 +34,17 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,MyReactActivity.class));
+                startActivity(new Intent(MainActivity.this, MyReactActivity.class));
             }
         });
+
+        hot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HotUpdateOwner updateOwner = new HotUpdateOwner(getApplicationContext());
+            }
+        });
+
 
 //        Handler handler = new Handler();
 //        handler.postDelayed(new SplashHandler(), 2000);
@@ -44,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
     }
 
-    class SplashHandler implements Runnable{
+    class SplashHandler implements Runnable {
         @Override
         public void run() {
-            startActivity(new Intent(getApplication(),MainActivity.class));
+            startActivity(new Intent(getApplication(), MainActivity.class));
             MainActivity.this.finish();
         }
     }

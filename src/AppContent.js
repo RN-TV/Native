@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 40,
         width: 920,
         height: 500,
-        backgroundColor: '#ff0000',
+        backgroundColor: '#3aff1e',
     },
     app_store_spoon: {
         justifyContent:'center',

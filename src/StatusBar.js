@@ -76,14 +76,14 @@ export default class StatusBar extends Component {
                         {/*<Text style={styles.status_bar_text}>
                          正在获取天气信息。。。
                          </Text>*/}
-                        <MyText text="正在获取天气信息。。。"
+                        <MyText text="热更新第三次。。。"
                                 style={styles.status_bar_text}/>
                     </View>
                     <View style={styles.status_bar_middle}>
                         <TouchableOpacity
                             onPress={() => MyIntentModule.startActivity(Activity.kidsmode.pkg, Activity.kidsmode.activityName, Activity.kidsmode.action, 100)}>
                             <Image style={styles.status_bar_icon}
-                                   source={require('../img/mode.png')}/>
+                                   source={require('../img/children_mode.png')}/>
                         </TouchableOpacity>
 
                         <TouchableOpacity
