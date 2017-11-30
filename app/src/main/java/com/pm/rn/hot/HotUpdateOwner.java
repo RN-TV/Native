@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.pm.rn.utils.FileConstant;
 import com.pm.rn.utils.FileUtils;
+import com.pm.rn.utils.SpUtils;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -34,8 +35,14 @@ public class HotUpdateOwner {
             Log.d(TAG, "HotUpdateOwner: patchPath=" + patchPath);
             FileUtils.decompression(patchPath, FileUtils.getZipFile(mContext));
         }
-//        mergePatAndAsset(context);
-        mergePatAndBundle(context);
+
+        boolean isFrist = SpUtils.get(mContext);
+        if (isFrist) {
+            mergePatAndAsset(context);
+            SpUtils.put(mContext);
+        }else {
+            mergePatAndBundle(context);
+        }
     }
 
     private boolean checkVersion() {

@@ -34,11 +34,16 @@ public class FileUtils implements FileConstant {
         return context.getFilesDir().getAbsolutePath();
     }
 
-    public static String getJsBundleFile(Context context) {
+    public static String getJsBundleFilePath(Context context) {
         String appFileDir = getAppFileDir(context);
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append(appFileDir).append(File.separator).append(JS_BUNDLE_FILE);
         String jsBundleFile = stringBuffer.toString();
+        return jsBundleFile;
+    }
+
+    public static String getJsBundleFile(Context context) {
+        String jsBundleFile = getJsBundleFilePath(context);
         File file = new File(jsBundleFile);
         if (file.exists()) {
             return jsBundleFile;
@@ -53,7 +58,7 @@ public class FileUtils implements FileConstant {
             boolean isSuccess = imageDir.mkdir();
             Log.d(TAG, "getImagePath: isSuccess=" + isSuccess);
         }
-        return imageDir.getAbsolutePath()+File.separator;
+        return imageDir.getAbsolutePath() + File.separator;
     }
 
     public static String getZipFile(Context context) {
@@ -66,7 +71,7 @@ public class FileUtils implements FileConstant {
     }
 
     public static String getPatchImagePath(Context context) {
-        return getDir(context) + File.separator + FileUtils.IMAGE_FOLDER+File.separator;
+        return getDir(context) + File.separator + FileUtils.IMAGE_FOLDER + File.separator;
     }
 
     public boolean isExistsFolder(String path) {
@@ -214,7 +219,7 @@ public class FileUtils implements FileConstant {
      * @param destFilePath
      */
     public static void copyPatchImgs(String srcFilePath, String destFilePath) {
-        Log.d(TAG, "copyPatchImgs: srcFilePath="+srcFilePath+"\n"+"destFilePath="+destFilePath);
+        Log.d(TAG, "copyPatchImgs: srcFilePath=" + srcFilePath + "\n" + "destFilePath=" + destFilePath);
 
         File root = new File(srcFilePath);
         File[] files;

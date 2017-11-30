@@ -18,8 +18,11 @@ public class Tool {
     }
 
     public static void main(String[] args) {
-        String o = getStringFromPat("/home/pm/Desktop/old.bundle");
-        String n = getStringFromPat("/home/pm/Desktop/new.bundle");
+        String relativelyPath=System.getProperty("user.dir");
+        System.out.println("relativelyPath = " + relativelyPath);
+
+        String o = getStringFromPat(relativelyPath+"/bundle/old.bundle");
+        String n = getStringFromPat(relativelyPath+"/app/src/main/assets/index.android.bundle");
 
         // 对比
         diff_match_patch dmp = new diff_match_patch();
@@ -33,7 +36,7 @@ public class Tool {
 
         try {
             // 将补丁文件写入到某个位置
-            Files.write(Paths.get("/home/pm/Desktop/patch.pat"), patchStr.getBytes());
+            Files.write(Paths.get(relativelyPath+"/bundle/patch.pat"), patchStr.getBytes());
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
