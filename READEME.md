@@ -4,6 +4,9 @@
 - bundle/old.bundle：上一次打包的index.android.bundle文件
 - bundle/bundle.zip:是需要更新的插件和图片的压缩包,最终上传热更新服务器的文件.
 - tool:生成差分包的Java工具
+- img:js页面图片
+- json:js页面数据源
+- js:ReactNative的js端源码
 
 #### 打包bundle命令：
 ```
