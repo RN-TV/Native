@@ -5,8 +5,6 @@ package com.pm.rn.utils;
  */
 
 public interface FileConstant {
-    String JS_BUNDLE_FOLDER = "";
-    String JS_BUNDLE_FOLDER_NAME = "jsbundle";
     String JS_BUNDLE_FILE = "index.android.bundle";
     String ZIP_FILE = "bundle.zip";
     String PATCH_FOLDER = "patch";

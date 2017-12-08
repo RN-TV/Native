@@ -45,7 +45,7 @@ public class MyReactActivity extends AppCompatActivity implements DefaultHardwar
                 .setJSMainModuleName("index.android")
                 .addPackage(new MainReactPackage())
                 .setUseDeveloperSupport(true)
-                .setInitialLifecycleState(LifecycleState.RESUMED);
+                .setInitialLifecycleState(LifecycleState.BEFORE_CREATE);
 
 //        for (ReactPackage reactPackage : getPackages()) {
 //            builder.addPackage(reactPackage);

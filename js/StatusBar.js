@@ -76,7 +76,7 @@ export default class StatusBar extends Component {
                         {/*<Text style={styles.status_bar_text}>
                          正在获取天气信息。。。
                          </Text>*/}
-                        <MyText text="热更新第二次。。。"
+                        <MyText text="热更新第五次"
                                 style={styles.status_bar_text}/>
                     </View>
                     <View style={styles.status_bar_middle}>

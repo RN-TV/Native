@@ -74,7 +74,7 @@ public class FileUtils implements FileConstant {
         return getDir(context) + File.separator + FileUtils.IMAGE_FOLDER + File.separator;
     }
 
-    public boolean isExistsFolder(String path) {
+    public static boolean isExistsFile(String path) {
         if (path != null && !path.isEmpty()) {
             File jsBundle = new File(path);
             return jsBundle.exists();
@@ -89,10 +89,6 @@ public class FileUtils implements FileConstant {
                 return jsBundle.mkdirs();
             }
         }
-        return false;
-    }
-
-    public static boolean copy() {
         return false;
     }
 

@@ -37,11 +37,12 @@ public class HotUpdateOwner {
         }
 
         boolean isFrist = SpUtils.get(mContext);
-        if (isFrist) {
-            mergePatAndAsset(context);
+        boolean existsFile = FileUtils.isExistsFile(FileUtils.getJsBundleFilePath(mContext));
+        if (isFrist && !existsFile) {
+            mergePatAndAsset();
             SpUtils.put(mContext);
-        }else {
-            mergePatAndBundle(context);
+        } else {
+            mergePatAndBundle();
         }
     }
 
@@ -53,31 +54,33 @@ public class HotUpdateOwner {
     /**
      * 与Asset资源目录下的bundle进行合并
      */
-    private static void mergePatAndAsset(Context context) {
+    private void mergePatAndAsset() {
 
         // 1.解析Asset目录下的bundle文件
-        String assetsBundle = FileUtils.getJsBundleFromAssets(context);
+        String assetsBundle = FileUtils.getJsBundleFromAssets(mContext);
         // 2.解析bundle当前目录下.pat文件字符串
-        String patcheStr = FileUtils.getStringFromPat(FileUtils.getPatchFile(context));
+        String patcheStr = FileUtils.getStringFromPat(FileUtils.getPatchFile(mContext));
         // 3.合并
-        merge(patcheStr, assetsBundle, context);
-        // 4.删除pat
-//        FileUtils.deleteFile(FileUtils.getPatchFile(context));
+        merge(patcheStr, assetsBundle);
+        // 4.添加图片
+        FileUtils.copyPatchImgs(FileUtils.getPatchImagePath(mContext), FileUtils.getImagePath(mContext));
+        // 5.删除pat
+        FileUtils.deleteFile(FileUtils.getPatchFile(mContext));
     }
 
     /**
      * 与内部存储的bundle进行合并
      */
-    private static void mergePatAndBundle(Context context) {
+    private void mergePatAndBundle() {
 
         // 1.解析sd卡目录下的bunlde
-        String assetsBundle = FileUtils.getJsBundleFromLocal(FileUtils.getJsBundleFile(context));
+        String assetsBundle = FileUtils.getJsBundleFromLocal(FileUtils.getJsBundleFile(mContext));
         // 2.解析最新下发的.pat文件字符串
-        String patcheStr = FileUtils.getStringFromPat(FileUtils.getPatchFile(context));
+        String patcheStr = FileUtils.getStringFromPat(FileUtils.getPatchFile(mContext));
         // 3.合并
-        merge(patcheStr, assetsBundle, context);
+        merge(patcheStr, assetsBundle);
         // 4.添加图片
-        FileUtils.copyPatchImgs(FileUtils.getPatchImagePath(context), FileUtils.getImagePath(context));
+        FileUtils.copyPatchImgs(FileUtils.getPatchImagePath(mContext), FileUtils.getImagePath(mContext));
         // 5.删除本次下发的更新文件
 //        FileUtils.traversalFile(FileConstant.FUTURE_JS_PATCH_LOCAL_FOLDER);
     }
@@ -85,17 +88,17 @@ public class HotUpdateOwner {
     /**
      * 合并,生成新的bundle文件
      */
-    private static void merge(String patcheStr, String bundle, Context context) {
+    private void merge(String patchStr, String bundle) {
 
         // 3.初始化 dmp
         diff_match_patch dmp = new diff_match_patch();
         // 4.转换pat
-        LinkedList<diff_match_patch.Patch> pathes = (LinkedList<diff_match_patch.Patch>) dmp.patch_fromText(patcheStr);
+        LinkedList<diff_match_patch.Patch> patchs = (LinkedList<diff_match_patch.Patch>) dmp.patch_fromText(patchStr);
         // 5.pat与bundle合并，生成新的bundle
-        Object[] bundleArray = dmp.patch_apply(pathes, bundle);
+        Object[] bundleArray = dmp.patch_apply(patchs, bundle);
         // 6.保存新的bundle文件
         try {
-            Writer writer = new FileWriter(FileUtils.getJsBundleFile(context));
+            Writer writer = new FileWriter(FileUtils.getJsBundleFilePath(mContext));
             String newBundle = (String) bundleArray[0];
             writer.write(newBundle);
             writer.close();

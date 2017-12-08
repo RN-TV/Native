@@ -11,7 +11,7 @@ import android.widget.Button;
 import com.pm.rn.hot.HotUpdateOwner;
 
 public class MainActivity extends AppCompatActivity {
-    private final String TAG = MainActivity.class.toString();
+    private static final String TAG = MainActivity.class.getSimpleName();
 
 
     @Override
@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         Button textView = (Button) findViewById(R.id.tv);
         Button button = (Button) findViewById(R.id.button);
         Button hot = (Button) findViewById(R.id.btn_hot);
+        Button rn = (Button) findViewById(R.id.btn_rn);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 HotUpdateOwner updateOwner = new HotUpdateOwner(getApplicationContext());
+            }
+        });
+
+        rn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,RNActivity.class));
             }
         });
 
